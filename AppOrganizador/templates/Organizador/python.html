@@ -1,0 +1,1270 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title></title>
+	<link rel="stylesheet" type="text/css" href='{% static "css/style-importado.css" %}'>
+	<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/ace/1.2.8/ace.js"></script>
+</head>
+<body>
+	<div class="header-container">
+		<div class="header-button"><a href="/AppOrganizador/django/">Django</a></div>
+		<div class="header-button"><a href="/AppOrganizador/css/">CSS</a></div>
+		<div class="header-button"><a href="/AppOrganizador/javascript/">JavaScript</a></div>
+	</div>
+
+	<div class="title-container">
+		<h1 id="titulo1">Apuntes Python</h1>
+		<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c3/Python-logo-notext.svg/640px-Python-logo-notext.svg.png">
+	</div>
+
+	<div class="index-container">
+		<ul class="index">
+			<li><a href="#listas">Las Listas</a></li>
+			<li><a href="#tupla">Las Tuplas</a></li>
+			<li><a href="#diccionario">Diccionario</a></li>
+			<li><a href="#bucle">Bucles</a></li>
+			<li><a href="#cpe">Continue - Pass- Else</a></li>
+			<li><a href="#generadores">Generadores</a></li>
+			<li><a href="#excepciones">Excepciones</a></li>
+			<li><a href="#poo">POO</a></li>
+			<li><a href="#mdc">Metodos de Cadena</a></li>
+			<li><a href="#paquetes">Modulos y Paquetes</a></li>
+			<li><a href="#ae">Archivos Externos</a></li>
+			<li><a href="#serializacion">Serializacion</a></li>
+			<li><a href="#ig">Interfaz Grafica</a></li>
+			<li><a href="#bbdd">Bases de Datos</a></li>
+			<li><a href="#lambda">Funcion Lambda</a></li>
+			<li><a href="#map">Funcion map</a></li>
+			<li><a href="#er">Expresiones Regulares</a></li>
+			<li><a href="#er">ER (Metacaracteres)</a></li>
+			<li><a href="#ms">ER (Match y Search)</a></li>
+			<li><a href="#decoradores">Decoradores</a></li>
+		</ul>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="listas">Las Listas</a></h2>
+		<code id="jsEditor" class="sintax">	
+			lista=["Maria", "Pepe", "Marta", "Antonio"]
+
+			lista.append("Sandra") # APPEND agrega un elemento al final de la lista
+			lista.insert(2, "Lucas") # INSERT agrega un elemento en la posicion deseada
+			lista.extend(["Mario", "Claudia"]) # EXTEND sirve para concatenar listas
+
+			lista.remove("Claudia") # Elimina un elemento de la lista
+			lista.pop() # Elimina el ultimo elemento de una lista  
+
+			print(lista[:]) # Se imprime toda la lista
+			print(lista[2]) # Se pone entre corchetes la posicion.
+			print(lista[0:3]) # Se imprime una porcion de la lista
+			print(lista.index("Lucas")) # Se imprime la posicion en la que se encuentra en la lista
+			print("Lucas" in lista) # Indica si es V o F 
+		</code>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="tupla">Las Tuplas</a></h2>
+		<code id="jsEditor2" class="sintax">
+			tuplas=("Lucas", 13, 1, 1995)
+
+			lista=list(tuplas) # La funcion 'List' convierte la tupla en una lista
+			tupla=tuple(lista) # La funcion 'tuple' convierte la lista en una tupla 
+
+			print(tupla[0])
+			print(tupla.count(13)) #Cuenta las veces que se encuentra en la tupla/lista 
+			print(len(tupla)) #Determina cuantos elementos tiene la tupla
+			
+			nombre, dia, mes, agno=tupla # Desenpaquetado de tupla: Asigna lo que esta dentro a una variable.
+		</code>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="diccionario">Diccionario</a></h2>
+		<code id="jsEditor3" class="sintax">
+			diccionario={"Alemania":"Berlin", "Francia":"Paris", "Reino Unido":"Londres", "España":"Madrid"} 
+			
+			diccionario["Italia"]="Lisboa" #Agregar un elemento al diccionario 
+			diccionario["Italia"]="Roma" #Para corregir o cambiar un valor la sintaxis es la misma 
+			del diccionario["Reino Unido"] #Eliminar un valor del diccionario 
+			print(diccionario["Francia"])
+			
+			
+			diccionario2={"Argentina":"Buenos Aires", 23:"Jordan", "Pi":3.14} #Se puede crear un diccionario con distintos tipos de valores 
+			
+			
+			tupla=["España", "Francia", "Alemania"] 
+			diccionario3={tupla[0]:"Madrid", tupla[1]:"Paris", tupla[2]:"Berlin"} #Se puede asignar una tupla como clave de un diccionario 
+			
+			
+			diccionario4={23:"Jordan", "Nombre":"Michael", "Equipo":"Chicago", "Anillos":[1991,1992,1993,1996,1997,1998]} #Tambien se puede guardar una tupla dentro de un diccionario 
+				
+			print(diccionario4.keys()) #Me devuelve las claves del diccionario 
+			print(diccionario4.values()) #Me devuelve los valores
+		</code>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="bucle">Bucles</a></h2>
+		<h3><a name="">For In</a></h3>
+		<code id="jsEditor4" class="sintax">
+			for i in ["Primavera","Otoño", "Invierno", "Verano"]: #Va a repetirlo 4 veces porque la lista tiene 4 elementos 
+				print("Hola") 
+
+			for i in ["Primavera","Otoño", "Invierno", "Verano"]: 
+				print(i) #Va a imprimir cada uno de los elementos de la lista 
+		</code>
+		<h4>Ejemplos</h4>
+		<code id="jsEditor5" class="sintax">
+			for i in["Lucas", "Ariel", "Pobersnik"]:
+				print("Hola", end=" ") #Con el end haces que imprima tres veces en la misma linea
+			
+			for i in "Lucas": #Si usamos un string ejecuta la accion dependiendo la cantidad de caracteres 
+				print("Hola")
+			
+			email=False 
+			for i in "lucaspobersnik@gmail.com": 
+				if i=="@":#Al estar en un bucle recorre todos los caracteres para ver si esta el que le pido 
+					email=True 
+			if email==True: 
+				print("El email es correcto") 
+			else: 
+				print("El email es incorrecto") 
+			
+			for i in range(5): 
+				print("Chau") 
+		</code>
+		<h3><a name="">For In Range</a></h3>
+		<code id="jsEditor6" class="sintax">
+			for i in range(5): 
+				print(f"valor de la variable {i}") 
+			
+				#Con la 'f' le digo a python que quiero usar una notacion especial 
+				#Ahora cuando ejecute, por cada vuelta de bucle imprime ese mensaje 
+			
+			for i in range(5, 10): #Va del 5 al 9 
+				print(f"valor de la variable {i}") 
+
+
+			for i in range(5, 10, 3): #El tercer valor indica de cuanto en cuanto va a hacer ese conteo 
+				print(f"valor de la variable {i}") 	
+		</code>
+
+		<h3><a name="">While</a></h3>
+		<code id="jsEditor7" class="sintax">
+			import math 
+			
+			print("Programa de calculo de raiz cuadrada") 
+			numero=int(input("Ingrese un numero: ")) 
+			
+			intentos=0 
+			
+			while numero<0: 
+				print("No se puede hallar la raiz de un numero negativo") 
+			
+				if intentos ==2: 
+					print("Has consumidos demasiados intentos, el programa ha finalizado") 
+					break; 
+			
+				numero=int(input("Ingrese un numero: ")) 
+				if numero<0: 
+					intentos=intentos+1 
+			
+			if intentos<2: 
+				solucion = math.sqrt(numero) #Clase para sacar la raiz cuadrada 
+				print("La raiz cuadrada de ", numero, " es ", solucion) 
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="cpe">Continue - Pass - Else</a></h2>
+		<p>
+			<b>Continue</b> - Ignora el resto del bucle a partir de que aparece y continua con otra vuelta
+			<b>Pass</b> - No se usa mucho. Devuelve un null
+			<b>Else</b> - Dentro de un bucle funciona igual que con un condicional
+		</p>
+		<code id="jsEditor8" class="sintax">
+			for letra in "Python": 
+				if letra=="h" 
+					continue 
+				print ("Viendo la letra: " + letra) 
+			
+			email=input("Introduce tu email: ") 
+			
+			for i in email: 
+				if i =="@": 
+					arroba=True 
+					break 
+			
+			else: #Va ligado con el for no con el if 
+				arroba=False 
+			
+			print(arroba)		
+		</code>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="generadores">Generadores</a></h2>
+		<p>
+			Estructuras que extraen valores de una funcion y se almacenan en objetos iterables (que se pueden recorrer).
+			A diferencia de las funciones tradicionales, los generadores devuelven los valores de uno en uno.
+			Son muy utiles con listas de valores infinitos y son mas eficientes.
+		</p>
+		<code id="jsEditor9" class="sintax">
+			#Funcion tradicional			
+
+			def generaPares(limite):
+				num=1 
+				miLista=[] 
+			
+				while num < limite: 
+					miLista.append (num*2)  
+					num=num+1 
+			
+				return miLista 
+			
+			print(generaPares(10)) 
+			
+			#Generadores
+			
+			def generaPares2(limite): 
+				num=1 
+			
+				while num < limite: 
+				yield num*2 
+				num=num+1 
+			
+			devuelvePares=generaPares2(10) 
+			
+			print(next(devuelvePares)) #Con la funcion next se devuelve el primer elemento almacenado en el generador 
+			print("Aca podria ir mas codigo...") 
+			
+			print(next(devuelvePares)) 
+			print("Aca podria ir mas codigo...") 
+			
+			print(next(devuelvePares)) 
+			print("Aca podria ir mas codigo...") 
+		</code>
+		<h4>Funcion Yield From</h4>
+			<p>Funcion 'Yield From': La utilizamos para simplificar el codigo de los generadores en el caso de utilizar bucles anidados <br>
+			Cuando los elementos de mi generador, a su vez tienen dentro, sub elementos</p>
+			<code id="jsEditor10" class="sintax">
+			def devuelve_ciudades(*ciudades): # Cuando ponemos un '*' por delante del argumento, le decimos a python que va a recibir un numero indeterminado y en forma de tupla
+				for elemento in ciudades:
+					# for subElemento in elemento: | En lugar de utilizar estas dos lineas usamos la de abajo que realiza el mismo trabajo en menos codigo
+						# yield subElemento
+					yield from elemento
+			
+			ciudades_devueltas = devuelve_ciudades("Madrid", "Barcelona", "Paris", "Buenos Aires") 
+			
+			print(next(ciudades_devueltas)) 
+			print(next(ciudades_devueltas)) 
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="excepciones">Excecpciones</a></h2>
+		<p>
+			Las excepciones son errores que ocurren durante la ejecucion del programa. La sintaxis es correcta pero durante la ejecucion ha ocurrido "algo inesperado"
+			<br>
+			Este tipo de errores ed ejecucion se pueden controlar para que la ejecucion del programa continue. Es lo que se conoce como "manejo o control de excepciones"
+		</p>
+		<code id="jsEditor11" class="sintax">
+			try: 
+				return num1/num2 
+			
+			except ZeroDivisionError: 
+				print ("No se puede dividir entre 0") 
+				return "Operacion erronea" 			
+		</code>
+		<h4>Ejemplos</h4>
+		<code id="jsEditor12" class="sintax">
+			def divide(): 
+				try: 
+					op1=(float(input("Introduce el primer numero: "))) 
+					op2=(float(input("Introduce el segundo numero: "))) 
+					print("La division es: " + str(op1/op2)) 
+			
+				except ValueError: 
+					print("El valor introducido es erroneo") 
+			
+				except ZeroDivisionError: 
+					print("No se puede dividir entre 0") # Se pueden capturar varias excepciones de forma consecutiva 
+			
+				# except: Tambien se puede poner el except solo y que capture todos los errores, pero es muy general (No recomendable) 
+				# print("Ha ocurrido un error") 
+			
+				finally: #Lo que introduzcas dentro del finally se va a ejecutar SIEMPRE 
+					print("Calculo finalizado")
+			
+			divide()
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="poo">Programacion Orientada a Objetos</a></h2>
+		<p>
+			<b>Clase:</b> Modelo donde se redactan las caracteristicas comunes de un grupo de objetos <br>
+			<b>Instancia/Objeto/Ejemplar:</b> Ejemplar perteneciente a una clase
+		</p>
+		<code id="jsEditor13" class="sintax">	
+			# Manera de acceder a la PROPIEDADES de objeto desde codigo:
+				miCoche.color = "rojo"
+				nombre.propiedad = "valor"
+			
+			# Manera de acceder a COMPORTAMIENTO del objeto desde codigo:
+				miCoche.arranca()
+				nombre.comportamiento()			
+		</code>
+		<h3>Sintaxis Basica</h3>
+		<code id="jsEditor14" class="sintax">
+			class Coche(): 
+				largoChasis=250 
+				anchoChasis=120 
+				ruedas=4 
+				encendido=False 
+			
+				def arrancar(self): 
+					self.encendido = True # El self se usa para referirse al propio objeto 
+			
+				def estado(self): 
+					if(self.encendido): 
+						return "El coche esta en marcha" 
+					else: 
+						return "El coche esta parado" 
+			
+			miCoche = Coche() # Instanciar una clase (Crear un objeto) 
+			
+			print("El largo del coche es ",miCoche.largoChasis) 
+			print("El coche tiene ", miCoche.ruedas " ruedas") 
+			
+			miCoche.arrancar()
+		</code>
+		<h3>Herencia</h3>
+		<p>Sirve para reutilizar codigo en caso de crear objetos similares</p>
+		<code id="jsEditor15" class="sintax">
+			class Vehiculos(): # Clase Padre 
+				def __init__(self, marca, modelo): 
+					self.marca = marca 
+					self.modelo = modelo 
+					self.enmarcha = False 
+					self.acelera = False 
+					self.frena = False 
+			
+				def arrancar(self): 
+					self.enmarcha = True 
+			
+				def acelerar(self): 
+					self.acelera = True 
+			
+				def frenar(self): 
+					self.frenar = True 
+			
+				def estado(self): 
+					print("Marca: ", self.marca, "\nModelo: ", self.modelo, "\n En Marcha: ", self.enmarcha, "\nAcelerando: ", self.acelera, "\nFrenando: ", self.frenar)
+			
+			
+			class Moto(Vehiculos): # Herencia 
+				caballito = "" 
+				def caballito(self): 
+					self.caballito = "Voy haciendo caballito" 
+			
+				def estado(self): 
+					print("Marca: ", self.marca, "\nModelo: ", self.modelo, "\n En Marcha: ", self.enmarcha, "\nAcelerando: ", self.acelera, "\nFrenando: ", self.frenar, "\n", self.caballito)
+
+			# Como no puede heredar esta clase porque no esta incluido el metodo 'caballito' se reescribe.	
+			
+			
+			class Camioneta(Vehiculos): 
+				def carga(self, cargar): 
+					self.cargado = cargar 
+					if(self.cargado): 
+						return "La furgoneta esta cargada" 
+					else: 
+						return "La furgoneta no esta cargada" 
+			
+			class VElectricos(): 
+				def __init__(self): 
+					self.autonomia = 100 
+			
+				def CargaEnergia(self): 
+					self.cargando = True 
+			
+			class BicicletaElectrica(VElectricos, Vehiculos) # Herencia Multiple 
+				pass 	
+			# Aca hay un problema porque toma el constructor de 'VElectricos' y de 'Vehiculos' 
+			miBici = BicicletaElectrica() #("Mountain Bike", "HC1030") Da error porque da preferencia a la primera indicada y la marca y modelo pertenecen a Vehiculos mientras que VElectricos no tiene ninguno 
+			
+			miMoto = Moto("Honda", "CBR") 
+			
+			miMoto.caballito() 
+			
+			miMoto.estado() # Al 'miMoto' estar incluido en la clase moto, cuando llamamos al metodo estado toma el que esta dentro de dicha clase 
+			
+			miCamioneta = Camioneta("Renault", "Kangoo") <
+			
+			miCamioneta.arrancar() 
+			
+			print(miCamioneta.carga(True))		
+		</code>
+		<h3>Metodo Super</h3>
+		<p>Llama al constructor de la clase padre y permite almacenar el nombre, la edad y la residencia del empleado</p>
+		<code id="jsEditor16" class="sintax">
+			class Persona(): 
+				def __init__(self, nombre, edad, residencia): 
+					self.nombre = nombre 
+					self.edad = edad 
+					self.residencia = residencia 
+			
+				def descripcion(self): 
+					print("Nombre: ", self.nombre, " Edad: ", self.edad, " Residencia: ", self.residencia)
+			
+			class Empleado(Persona): 
+				def __init__(self, salario, antiguedad, nombre_empleado, edad_empleado, residencia_empleado): 
+					super().__init__(nombre_empleado, edad_empleado, residencia_empleado)
+					self.salario = salario 
+					self.antiguedad = antiguedad 
+			
+				def descripcion(self): 
+					super().descripcion() 
+					print(" Salario: ", self.salario, " Antiguedad: ", self.antiguedad) 
+			
+			Antonio = Empleado(1500, 15, "Antonio", 55, "España") 
+			Antonio.descripcion() 	
+			
+			print(isinstance(Manuel, Empleado)) # Manuel es empleado? Devuelve True o False 
+			
+			# isinstance(): Nos va informar si un objeto es instancia de una clase determinada | Si un objeto pertenece a una clase o no
+		</code>
+		<h3>Poliformismo</h3>
+		<code id="jsEditor17" class="sintax">
+			class Coche(): 
+				def desplazamiento(self): 
+					print("Me desplazo utilizando cuatro ruedas") 
+			
+			class Moto(): 
+				def desplazamiento(self): 
+					print("Me desplazo utilizando dos ruedas")
+			
+			class Camion():
+				def desplazamiento(self):
+					print("Me desplazo utilizando seis ruedas")
+			
+			def desplazamientoVehiculo(vehiculo):
+				vehiculo.desplazamiento() 
+				# POLIMORFISMO: Dependiendo que vehiculo le ingrese va a llamar a una funcion desplazamiento diferente
+			
+			miVehiculo = Camion()
+			desplazamientoVehiculo(miVehiculo)
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="mdc">Metodos de Cadenas</a></h2>
+		<ul>
+			<li>upper(): Convierte en mayuscula</li>
+			<li>lower() - Conveirte en minuscula</li>
+			<li>capitalize() - Pone la primera letra en mayuscula</li>
+			<li>count() - Cuenta la cantidad de veces que aparece una letra o string</li>
+			<li>find() - Representa la 'posicion' en la que se encuentra una letra o string</li>
+			<li>isdigit() - Devuelve un booleano, sobre si un valor es numerico o no</li>
+			<li>isalum() - Comprueba si son alfanumericos</li>
+			<li>isaplha() - Comprueba si hay solo letras</li>
+			<li>split() - Separa por palabras utilizando espacios</li>
+			<li>strip() - Borra los espacios sobrantes al principio y al final</li>
+			<li>replace() - Cambia una palabra o letra por otra</li>
+			<li>rfind() - Lo mismo que find pero contando desde atras</li>
+		</ul>
+	</div>
+	<div class="codigo">
+		<h2><a name="paquetes">Modulos y Paquetes</a></h2>
+		<h3>Modulos</h3>
+		<p>Un modulo es un archivo con extension .py o .pyc (Python compilado) o un archivo escrito en C para CPython, que posee su propio espacio de nombres y que puede contener variables, funciones, clases e incluso otros modulos. <br>
+		Sirven para organizar y reutilizar el codigo</p>
+		<code id="jsEditor18" class="sintax">
+			import Modulos 
+			
+			Modulos.sumar(7,5) # Hay que poner el nombre del modulo antes de usar la funcion 
+			
+			# Para no tener que andar escribiendo siempre el nombre del modulo antes hay que cambiar el import a:
+			from Modulos import * # Si se necesita una funcion especifica de un modulo se pone el nombre de la funcion en lugar del asterisco (Este hay veces que ocupa mucho espacio) 
+		</code>
+		<h3>Paquetes</h3>
+		<p>Son directorios o carpetas donde se almacenaran modulos relacionados entre si. <br>
+		Sirven para organizar y reutilizar tu codigos. <br>
+		Para crearlo hay que crear una carpeta con un archivo __init__.py en su interior</p> <br>
+		<code id="jsEditor19" class="sintax">
+			# from nombre_carpeta.nombre_archivo import nombre_funcion 
+			from paquetes.calculos_generales import sumar 
+			sumar(1,2)
+			
+			# Si se crean SUBPAQUETES es decir una carpeta adentro de un paquete
+			# from nombre_carpeta.nombre_subcarpeta.nombre_archivo import * 
+			from paquetes.operaciones_matematicas.suma_resta import sumar 
+		</code>
+		<h3>Paquetes Distribuibles</h3>
+		<p> Podemos enviarlos a otra gente para que puedan usarlos  <br>
+		Se crea en la carpeta principal un archivo llamado setup.py que va a contener una descripcion del paquete a distribuir </p>
+		<code id="jsEditor20" class="sintax">
+			from setuptools import setup 
+			
+			setup( 
+			
+				name="paquetecalculos", 
+				version="1.0", 
+				description="Paquete de funciones", 
+				author="Lucas", 
+				author_email="lucaspobersnik@gmail.com",
+				url= "www.lucaspobersnik.com",
+				packages=["20 Paquetes Distr"] 
+				# packages=["nombre_paquete", ] 
+				# Si quiero incluir algo de un subpaquete 
+				# packages=["nombre_paquete" , "nombe_paquete.nombre_archivo"]
+				) 
+		</code>
+		<p>Creado esto tenemos que ir al directorio donde esta la carpeta desde CMD y poner:
+		python setup.py sdist <br>
+		<br>
+		Si todo sale bien deberian quedar creadas dos carpetas una 'egg-info' y otra 'dist' donde adentro va a haber un archivo '.tar.gz' que es el que se envia <br>
+		<br>
+		<br>
+		PARA INSTALARLO: <br>
+		En el cmd vas al directorio donde esta guardado (dentro de dist) <br>
+		Ahi se pone 'pip3 install nombre_paquete' <br>
+		</p>
+	</div>
+	<div class="codigo">
+		<h3><a name="ae">Archivos Externos</a></h3>
+		<p>Cuando se trabaja con Archivos Externos se trabaja con 'io' que es predeterminado de python</p>
+		<code id="jsEditor21" class="sintax">
+			from io import open 
+			
+			archivo_texto = open("archivo.txt", "w") # la w es de 'write' 
+			# El metodo open sirve para abrir archivos externos y pide dos arguementos: el nombre y el modo en el que lo vamos a abrir (modo lectura, modo escritura o modo append)
+
+			frase = "Aguante Messi \n y el Diego" 
+			
+			archivo_texto.write(frase) # Escribimos en el txt creado la frase 
+			archivo_texto.close() # Cerramos, es parte del proceso 
+			
+			# ------------------------ 
+			
+			archivo_texto = open("archivo.txt", "r") # Abrimos en modo lectura 
+			
+			texto=archivo_texto.read() # Lee lo que hay en archivo_texto y lo guarda en la variable creada 
+			# .readlines() - Almacena linea a linea en una lista 
+			
+			archivo_texto.close() 
+			
+			print(texto)
+			
+			
+			#---------------------- 
+			
+			archivo_texto = open("archivo.txt", "a") # Abrimos en modo Append 
+			archivo_texto.write("\n Messi y el diego loco nadie mas") 
+		</code>
+		<h4>Editar archivos externos</h4>
+		<code id="jsEditor22" class="sintax">
+			from io import open 
+			
+			archivo_texto = open("archivo.txt", "r+") # 'r+' es de lectura y escritura 
+			archivo_texto.seek(10) # 'seek' sirve para mover el cursor dentro del archivo.txt 
+			archivo_texto.seek(len(archivo_texto.readline())) # Mover el cursor a la primera linea 
+
+			print(archivo_texto.read())
+			
+			#------------- 
+			
+			lista_texto = archivo_texto.readlines() 
+			lista_texto[1] = "Esta linea ha sido incluida desde el exterior \n" 
+			archivo_texto.seek(0) 
+			archivo_texto.writelines(lista_texto) # Pide de parametro una lista 
+			
+			archivo_texto.close()
+		</code>
+	</div>
+	<div class="codigo">
+		<h3><a name="serializacion">Serializacion</a></h3>
+		<p>Consiste en guardar en un fichero extero (una coleccion, un diccionario, un objeto, etc) codificado en codigo binario, esto para distribuir algo por internet, para guardarlo en un dispositivo de almacenamiento externo o base de datos. Tiene diversas ventajas <br>
+		<br>
+		Se utiliza la biblioteca 'pickle': <br>
+		<b>Metodo dump():</b> volcado de datos al fichero binario externo <br>
+		<b>Metodo load():</b> carga de los datos del fichero binario externo <br>
+		</p>
+		<code id="jsEditor23" class="sintax">
+			import pickle 
+			
+			lista_nombres=["Pedro", "Ana", "Maria", "Isabel"] 
+			
+			fichero_binario=open("lista_nombres", "wb") # wb es escritura binaria 
+			
+			pickle.dump(lista_nombres, fichero_binario) 
+			
+			fichero_binario.close() 
+			
+			# ------
+			
+			fichero = open("lista_nombres", "rb") # rb es leer binario 
+			lista = pickle.load(fichero) # Para cagar el archivo binario 
+		</code>
+		<h3>Serializacion de Objetos</h3>
+		<code id="jsEditor24" class="sintax">
+			import pickle 
+			
+			class Vehiculos():  
+				def __init__(self, marca, modelo):
+					self.marca = marca
+					self.modelo = modelo
+					self.enmarcha = False
+					self.acelera = False 
+					self.frena = False 
+			
+				def arrancar(self): 
+					self.enmarcha = True
+			
+				def acelerar(self):
+					self.acelera = True 
+			
+				def frenar(self):
+					self.frenar = True
+			
+				def estado(self):
+					print("Marca: ", self.marca, "\nModelo: ", self.modelo, "\n En Marcha: ", self.enmarcha, "\nAcelerando: ", self.acelera, "\nFrenando: ", self.frenar)
+			
+			coche1=Vehiculos("Mazda", "MX5") 
+			coche2=Vehiculos("Seat", "Leon") 
+			coche3=Vehiculos("Renault", "Megane")
+			
+			coches=[coche1, coche2, coche3] 
+			
+			fichero=open("losCoches", "wb") 
+			pickle.dump(coches, fichero) 
+			fichero.close() 
+			del (fichero) 
+			
+			ficheroApertura = open("losCoches", "rb") 
+			misCoches = pickle.load(ficheroApertura) 
+			ficheroApertura.close()
+			
+			for c in misCoches: 
+				print(c.estado()) 
+		</code>
+		<h3>Guardado Permanente</h3>
+		<code id="jsEditor25" class="sintax">
+			import pickle 
+			
+			class Persona: 
+				def __init__(self, nombre, genero, edad):
+					self.nombre = nombre 
+					self.genero = genero 
+					self.edad = edad 
+					print("Se ha creado una persona nueva con el nombre de ", self.nombre)
+			
+				def __str__(self): # '__str__' convirte todo en string
+					return "{} {} {}".format(self.nombre, self.genero, self.edad) 
+			
+			class ListaPersonas: 
+				personas = [] 
+			
+				def __init__(self):
+					listaDePersonas = open("FicheroExterno", "ab+") # 'ab+' agrega informacion binaria 
+					listaDePersonas.seek(0)
+			
+					try: # Se hace un try porque la primera vez no va a tener ninguna persona cargada y va a dar error 
+						self.personas=pickle.load(ListaDePersonas) 
+						print("Se cargaron {} personas del fichero externo".format(len(self.personas))) # El.format servia para que dentro de los corchetes se incluya lo que hay entre parentesis 
+					except:  
+						print("El fichero esta vacio") 
+					finally: 
+						listaDePersonas.close()
+						del (listaDePersonas) 
+			
+				def agregarPersonas(self, p): 
+					self.personas.append(p) 
+					self.guardasPersonasEnFicherExterno() 
+			
+				def mostrarPersonas(self): 
+					for p in self.personas: 
+					print(p) 
+			
+				def guardasPersonasEnFicherExterno(self): 
+					listaDePersonas = open("FicheroExterno", "wb") 
+					pickle.dump(self.personas, listaDePersonas) 
+					listaDePersonas.close() 
+					del (listaDePersonas) 
+			
+				def mostrarInfoFicheroExterno(self): 
+					print("La informacion del fichero externo es la siguiente: ") 
+					for p in self.personas:
+						print(p)
+			
+			miLista = ListaPersonas() 
+			persona = Persona("Antonio", "Masculino", 49)
+			miLista.agregarPersonas(persona) 
+			miLista.mostrarInfoFicheroExterno() 
+		</code>		
+	</div>
+	<div class="codigo">
+		<h2><a name="ig">Interfaz Grafica</a></h2>
+		<h3>Raiz y Frame</h3>
+		<p>Son intermediarios entre el programa y el usuario. Formadas por un conjunto de graficos, ventanas, botones, menus, etc.</p>
+		<code id="jsEditor26" class="sintax">
+			from tkinter import * 
+			
+			raiz = Tk() 
+			raiz.title("Ventana de pruebas") # Le ponemos titulo a la ventana 
+			raiz.resizable(1,1) # El primer parametro es W y el segundo es H. Determina si se permite o no ajustar el tamaño de la ventana 
+			# raiz.iconbitmap("gato.ico"). Cambia el icono de la app. Dentro de los parentesis se le pone la ruta donde se encuentra 
+			# raiz.geometry("650x350")  Cambia el tamaño predeterminado de la ventana 
+			raiz.config(bg="blue") # Config permite hacer muchas cosas, en este caso estamos cambiando el color de fondo 
+			
+			# Si ahora abrimos la este '.py' desde la carpeta se va a abrir la ventana con la consola atras.
+			# Para que esto no pase podemos cambiar la extension a '.pyw' 
+			
+			#-----
+			
+			miFrame = Frame() # Creamos el frame: Lo que va delante de la raiz 
+			miFrame.pack() # Lo empaquetamos, es decir lo metemos dentro de la raiz 
+			# Si dentro de los parametros de pack pongo: 'side="right"' me va a alinear el frame a la derecha 
+			# Si dentro de los parametros de pack pongo: 'anchor="n"' me lo va a alinear al norte (Trabaja con puntos cardinales, si quiero ponerlo en la esquina izquierda ponga side left y anchor nort) 
+			# Si dentro de los parametros de pack pongo; 'fill="x"' rellena la totalidad superior. 
+			# Si dentro de los parametros de pack pongo; 'fill="y"', expand="True" se expande verticalmente 
+			# Si dentro de los parametros de pack pongo; 'fill="both"' se expande con la raiz 
+
+			miFrame.config(bd=35) # Tamaño del borde 
+			miFrame.config(relief="groove") # Tipo de borde 
+			miFrame.config(bg="red") 
+			miFrame.config(cursor="hand2") # Cambia la imagen del cursor 
+			miFrame.config(width="650", height="350") 
+			
+			
+			raiz.mainloop() # Ponemos a la ventana en un bucle infinito 
+			# Con 'tk()' y 'x.mainloop()' creamos la primera ventana 
+			# mainloop debe estar SIEMPRE al final 
+		</code>
+		<h3>Widget LABEL</h3>
+		<p>Widget utilizado para mostrar texto e imagenes.</p>
+		<code id="jsEditor27" class="sintax">
+		from tkinter import *
+		
+		root = Tk() 
+		miFrame = Frame(root, width=500, height=400) 
+		miFrame.pack() 
+		
+		# miImagen = PhotoImage(file="ruya.gif") Agregar imagen 
+		
+		# Sintaxis: variableLabel = Label(contenedor, opciones) En contenedor va donde va a estar contenido y las opciones son las mismas que puede modificar config 
+		miLabel = Label(miFrame, text="Aguante River", fg="red") 
+		miLabel.place(x=100, y=200) # Ubica al label en las coordenadas que le demos 
+		
+		# Para abreviar el codigo, si no vamos a usar la variable label mas adelante podemos poner:
+		# Label(miFrame, text="Aguante River").place(x=100, y=200)
+		
+		root.mainloop()
+		</code>
+		<h3>Widgets ENTRY, TEXT y BUTTON</h3>
+		<p>Widget ENTRY. Utilizado para introducir texto (Practicamente igual al label) <br>
+		Widget TEXT. Utilizados para introducir un texto largo <br>
+		Widget BUTTON. Utilizado para interactuar con la interfaz <br></p>
+		<code id="jsEditor28" class="sintax">
+			from tkinter import * 
+			raiz=Tk() 
+			
+			miFrame=Frame(raiz, width=1200, height=600) 
+			miFrame.pack() 
+			
+			minombre=StringVar() # Hacemos que lo que se incluya en 'minombre' sea un string 
+			
+			cuadroNombre=Entry(miFrame, textvariable=minombre) # TEXTVARIABLE. Conseguimos que 'cuadroNombre' este asociado con el valor que introduzcamos en la variable 'minombre' 
+			cuadroNombre.grid(row=0, column=1) # Crea una grilla. Sirve para ubicar elementos (En este caso ubica el cuadro de texto en la fila 1 columna 2) 
+			cuadroNombre.config(fg="red", justify="center") 
+			
+			cuadroPass=Entry(miFrame) 
+			cuadroPass.grid(row=1, column=1) 
+			cuadroPass.config(show="*") # Para no mostrar la pass 
+
+			cuadroApellido=Entry(miFrame)  
+			cuadroApellido.grid(row=2, column=1)
+			
+			cuadroDireccion=Entry(miFrame)
+			cuadroDireccion.grid(row=3, column=1) 
+			
+			textoComentario=Text(miFrame, width=16, height=5) # TEXT. Como el tamaño base es muy grande va a desordenar el resto de cosas 
+			textoComentario.grid(row=4, column=1) 
+			
+			# Como el widget TEXT puede incluir mucho texto se le pone una barra a la derecha para desplazarse: 
+			# nombreVariable=Scrollbar(contenedor, command=DondeSeUbica.yview o xview dependiendo si la barra es vertical u horizontal) 
+			scrollVertical=Scrollbar(miFrame, command=textoComentario.yview) 
+			scrollVertical.grid(row=4, column=2, sticky="nsew") # La ubicamos al lado del widget TEXT 
+			# Sticky="nsew". Hacemos que la barra se adapte SIEMPRE al tamaño del TEXT  
+			
+			# Configura el cuadradito dentro de la barra de scroll (Hace que podamos moverlo para ubicarnos en el TEXT) 
+			textoComentario.config(yscrollcommand=scrollVertical.set) 
+			
+			nombreLabel=Label(miFrame, text="Nombre:") 
+			nombreLabel.grid(row=0, column=0, sticky="e", padx=10, pady=10) # STICKY. Pone el label al 'este'(funciona con puntos cardinales) 
+			
+			passLabel=Label(miFrame, text="Contraseña:") 
+			passLabel.grid(row=1, column=0, sticky="e", padx=10, pady=10) 
+			
+			apellidoLabel=Label(miFrame, text="Apellido:") 
+			apellidoLabel.grid(row=2, column=0, sticky="e", padx=10, pady=10) 
+			
+			direccionLabel=Label(miFrame, text="Direccion:") 
+			direccionLabel.grid(row=3, column=0, sticky="e", padx=10, pady=10) 
+			
+			comentariosLabel=Label(miFrame, text="Comentarios:") 
+			comentariosLabel.grid(row=4, column=0, sticky="e", padx=10, pady=10) 
+			
+			# PADX y PADX. Le ponen PADDING a los los elementos, 'padx' sobre el eje x (horizontal) y 'pady' sobre el eje y (vertical)
+			
+			def codigoBoton: 
+				minombre.set("Lucas") 
+			
+			botonEnvio=Button(raiz, text="Enviar", command=codigoBoton) # Crear BOTON 
+			# COMMAND. Vinculamos el boton con una funcion. En este caso hacemos que al tocar el boton enviar se ponga Lucas dentro del recuadro de nombre 
+			
+			raiz.mainloop()			
+		</code>
+		<h3>Radio Button</h3>
+		<code id="jsEditor29" class="sintax">
+			from tkinter import * 
+			
+			root=Tk() 
+			
+			varOpcion=intVar()
+			
+			Label(root, text="Genero: ").pack() 
+			
+			# Creo esta funcion porque cuando hagamos alguna aplicacion funcional vamos a necesitar saber que opcion eligio el usuario 
+			def imprimir():  
+				# print(varOpcion.get()) - Imprime en consola
+			
+				if varOpcion.get()==1: 
+					etiqueta.config(text="Has elegido 'Masculino") 
+				else: 
+					etiqueta.config(text="Has elegido 'Femenino") 
+			
+			Radiobutton(root, text="Masculino", variable=varOpcion, value=1, command=imprimir).pack()  
+			Radiobutton(root, text="Femenino", variable=varOpcion, value=2, command=imprimir).pack() 
+			
+			# Variable y value sirve para almacener el valor asignado (si o si numerico) en esa variable. 
+			# Todo esto lo hacemos porque de base el 'radiobutton' aparece marcado (ambos) y deberia aparecer vacio y que cuando se seleccione uno el otro se deseleccione 
+			
+			etiqueta=Label(root) 
+			etiqueta.pack() 
+			
+			root.mainloop()			
+		</code>
+		<h3>Check Button</h3>
+		<code id="jsEditor30" class="sintax">
+			from tkinter import * 
+			
+			root=Tk()
+			root.title("Ejemplo")
+			
+			# foto=PhotoImage(file="avion.png") 
+			# Label(root, image=foto).pack() 
+			
+			playa=intVar() 
+			montaña=intVar()
+			rural=intVar() 
+			
+			def opcionesViaje(): 
+				opcionEscogida="" 
+			
+				if (playa.get()==1): 
+					opcionEscogida+=" playa" 
+			
+				if (montaña.get()==1): 
+					opcionEscogida+=" montaña" 
+			
+				if (rural.get()==1): 
+					opcionEscogida+=" rural" 
+			
+				textoFinal.config(text=opcionEscogida) # En el label del final ponemos como texto lo que haya en la variable opcionEscogida 
+			
+			
+			frame=Frame(root) 
+			frame.pack() 
+			
+			Label(frame, text="Elige destinos", width=50).pack() 
+			
+			Checkbutton(root, text="Playa", variable=playa, onvalue=1, offvalue=0, command=opcionesViaje).pack()
+			Checkbutton(root, text="Montaña", variable=montaña, onvalue=1, offvalue=0, command=opcionesViaje).pack()
+			Checkbutton(root, text="Turismo Rural", variable=rural, onvalue=1, offvalue=0 command=opcionesViaje).pack() 
+			
+			# ONVALUE. Es el valor que tiene cuando esta seleccionado 
+			# OFFVALUE. El valor que tiene cuando NO esta seleccionado 
+			
+			textoFinal=Label(frame) 
+			textoFinal.pack() 
+			
+			root.mainloop()			
+		</code>
+		<h3>Menus</h3>
+		<code id="jsEditor31" class="sintax">
+			from tkinter import * 
+			from tkinter import messagebox # Importamos las VENTANAS EMERGENTES 
+			
+			root=Tk() 
+			
+			def infoAdicional(): 
+				messagebox.showinfo("Procesador de Juan", "Procesador de textos vesion 2018") 
+				# El primer parametro es lo que sale en la barra superior de la ventana y el segundo lo que esta dentro 
+				# messagebox.showwarning va a mostras una ventana de advertencia 
+			
+			def SalirAplicacion(): 
+				valor = messagebox.askquestion("Salir", "¿Desea salir de la aplicacion?") # hace una pregunta y permite tocar si o no  
+				# Al tocar si o no devuelve un valor asi que lo igualamos a una variable 
+				# messagebox.askokcancel - Los botones son 'aceptar' y 'cancelar' y devuelve booleanos 
+				# messagebox.askretrycanc - Los botones son 'reintentar' y 'cancelar' 
+			
+				if valor == "yes": 
+					root.destroy() # Para salir de la aplicacion 
+			
+			barraMenu=Menu(root) 
+			root.config(menu=barraMenu, width=300, height=300) 
+			
+			archivoMenu=Menu(barraMenu, tearoff=0) # TEAROFF=0. Elimina la linea de puntos que viene por defecto 
+			EdicionMenu=Menu(barraMenu) 
+			HerramientasMenu=Menu(barraMenu)
+			AyudaMenu=Menu(barraMenu) 
+			
+			archivoMenu.add_command(label="Nuevo") # Crear SubElementos de la cascada (lo que se abre cuando tocamos archivo) 
+			archivoMenu.add_command(label="Guardar") 
+			archivoMenu.add_command(label="Guardar Como") 
+			archivoMenu.add_command(label="Cerrar", command=infoAdicional) 
+			archivoMenu.add_separator() # Crea una separacion en la cascada (estetico) 
+			archivoMenu.add_command(label="Salir") 
+			
+			
+			barraMenu.add_cascade(label="Archivo", menu=archivoMenu) 
+			barraMenu.add_cascade(label="Edicion", menu=EdicionMenu) 
+			barraMenu.add_cascade(label="Herramientas", menu=HerramientasMenu) 
+			barraMenu.add_cascade(label="Ayuda", menu=AyudaMenu) 
+			
+			root.mainloop()			
+		</code>
+		<h3>File Dialog</h3>
+		<p>Ventana que permite importar archivos, guardarlos, etc.</p>
+		<code id="jsEditor32" class="sintax">
+			from tkinter import * 
+			from tkinter import filedialog # Ventanas que permiten abrir archivos, guardarlos, etc 
+			
+			root=Tk() 
+			
+			def abreFichero(): 
+				fichero=filedialog.askopenfilename(title="Abrir", initialdir="C:", filetypes=(("Ficheros de Excel", "*xlsx"),("Ficheros de texto", "*.txt"), ("Todos los ficheros", "*.*")))  
+				# Devuelve la ruta del archivo 
+				# initialdir. Donde va a buscar de manera predeterminada 
+				# filetypes. El tipo de documento que permite abrir (minimo dos) 
+			
+			Button(root, text="Abrir fichero", command=abreFichero).pack() 
+			
+			root.mainloop() 
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="bbdd">Base de Datos</a></h2>
+		<code id="jsEditor33" class="sintax">
+			import sqlite3 
+
+			miConexion=sqlite3.connect("PrimeraBase") # Creamos una conexion con la base de datos y la base de datos en el mismo paso
+
+			miCursor=miConexion.cursor() # Creamos el cursor
+
+			# miCursor.execute("CREATE TABLE PRODUCTOS (NOMBRE_ARTICULO VARCHAR(50), PRECIO INTEGER, SECCION VARCHAR(20))")
+			# Ejecutamos la 'consulta' y dentro de los parentesis ponemos las instrucciones SQL
+			# Se ejecuta una vez y se comenta (o elimina) ya que sino el programa va a intentar crearla nuevamente y va a dar un error
+
+			# miCursor.execute("INSERT INTO PRODUCTOS VALUES('PELOTA', 15, 'DEPORTES')")
+
+
+			# Para insertar varios elementos al mismo tiempo:
+			# variosProductos=[ 
+			# 	("Camiseta", 10, "Deportes"),
+			# 	("Jarron", 90, "Ceramica"),
+			# 	("Camion", 20, "Jugueteria")
+			# ]
+			# miCursor.executemany("INSERT INTO PRODUCTOS VALUES (?,?,?)", variosProductos) # Se pone '?' dependiente la cantidad de campos a utilizar
+
+			# Para leer datos de una base de datos:
+			miCursor.execute("SELECT * FROM PRODUCTOS")
+			listaProductos=miCursor.fetchall() # Se guarda como una LISTA los que hay en la tabla productos 
+
+			for producto in listaProductos:
+				print("Nombre Articulo: ", producto[0], "Seccion: ", producto[2])
+
+			miConexion.commit() # Cada vez que se realizan cambios en la BBDD se deben 'confirmar'
+
+			miConexion.close() # Cerramos conexion			
+		</code>
+		<h3>Modificar BBDD</h3>
+		<code id="jsEditor34" class="sintax">
+			import sqlite3
+
+			miConexion=sqlite3.connect("GestionProductos")
+
+			miCursor=miConexion.cursor()
+
+
+			# Con PRIMARY KEY crea CAMPO CLAVE (no se puede repetir) | Con el autoincrement evitamos tener que estarle poniendo nosotros el ID
+			miCursor.execute('''
+				CREATE TABLE PRODUCTOS (
+				ID INTEGER PRIMARY KEY AUTOINCREMENT,
+				NOMBRE_ARTICULO VARCHAR(50) UNIQUE, # Con UNIQUE no se puede repetir el nombre pero no es campo clave
+				PRECIO INTEGER,
+				SECCION VARCHAR(20))
+			''')
+
+			productos=[
+				("pelota", 20, "jugueteria"),
+				("pantalon", 15, "confeccion"),
+				("destornillador", 25, "ferreteria"),
+				("jarron", 45, "ceramica")
+
+			]
+
+			miCursor.executemany("INSERT INTO PRODUCTOS VALUES (NULL,?,?,?)", productos)
+			# Si usamos el autoincrement NO hay que poner un interrogante sino un 'NULL'
+
+			# Leer informacion de una BBDD (READ):
+			miCursor.execute("SELECT * FROM PRODUCTOS WHERE SECCION='confeccion'") # En minuscula porque es case sensitive
+			productos=miCursor.fetchall()
+			print(productos)
+
+			# Hacer una actualizacion de registros (UPDATE):
+			miCursor.execute("UPDATE PRODUCTOS SET PRECIO=35 WHERE NOMBRE_ARTICULO='pelota'")
+
+			# Eliminar un registro (DELETE):
+			miCursor.execute("DELETE FROM PRODUCTOS WHERE ID=5")
+
+			miConexion.commit()
+
+			miConexion.close()			
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="lambda">Funcion Lambda</a></h2>
+		<p>Es una funcion anonima y se utiliza para abreviar codigo.</p>
+		<code id="jsEditor35" class="sintax">
+			# Funcion Tradicional
+			def area_triangulo(base, altura):
+				return (base*altura)/2
+
+			# Funciona Lambda
+			area_lambda=lambda base, altura:(base*altura/2)
+
+			print(area_triangulo(7,5))
+			print(area_lambda(9,6))		
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="filter">Funcion Filter</a></h2>
+		<p>Forma parte del 'Paradigma Funcional'. Verifica que los elementos de una secuencia cumplen una condicion, devolviendo un iterador con los elementos que cumplan dicha condicion.</p>
+		<code id="jsEditor36" class="sintax">
+			def numero_par(num):
+				if num % 2 == 0:
+					return True
+
+			numeros=[17,24,7,39,8,51,92]
+
+			print(list(filter(numero_par, numeros))) # Devuelve un objeto si no ponemos el 'list'
+
+			# ---------- EJEMPLO 2 -----------
+
+			class Empleado:
+				def __init__(self, nombre, cargo, salario):
+					self.nombre=nombre
+					self.cargo=cargo
+					self.salario=salario
+
+				def __str__(self):
+					return "{} que trabaja como {} tiene un salario de {} $".format(self.nombre, self.cargo, self.salario)
+
+			listaEmpleados=[
+			Empleado("Juan", "Director", 75000)
+			Empleado("Ana", "Presidenta", 85000)
+			Empleado("Antonio", "Administrativo", 20000)
+			Empleado("Sara", "Secretaria", 27000)
+			Empleado("Mario", "Compras", 21000)
+			]
+
+			salarios_altos=filter(lambda empleado:empleado.salario>50000, listaEmpleados)
+
+			for empleado_salario in salarios_altos:
+				print(empleado_salario)			
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="map">Funcion Map</a></h2>
+		<p>Tambien es una funcion de orden superior. Aplica una funcion a cada elemento de una lista iterable devolviendo una lista con los resultados.</p>
+		<code id="jsEditor37" class="sintax">
+			class Empleado:
+				def __init__(self, nombre, cargo, salario):
+					self.nombre=nombre
+					self.cargo=cargo
+					self.salario=salario
+
+				def __str__(self):
+					return "{} que trabaja como {} tiene un salario de {} $".format(self.nombre, self.cargo, self.salario)
+
+			listaEmpleados=[
+			Empleado("Juan", "Director", 6700)
+			Empleado("Ana", "Presidenta", 7500)
+			Empleado("Antonio", "Administrativo", 2100)
+			Empleado("Sara", "Secretaria", 2150)
+			Empleado("Mario", "Compras", 1800)
+			]
+
+			def calculo_comision(empleado):
+				empleado.salario=empleado.salario*1.03
+				return empleado
+
+			listaEmpleadosComision=map(calculo_comision, listaEmpleados)
+
+			for empleado in listaEmpleadosComision:
+				print(empleado)		
+		</code>
+	</div>
+	<div class="codigo">
+		<h2><a name="er">Expresiones regulares (ER)</a></h2>
+		<p>Son una secuencia de caracteres que forman un patron de busqueda.
+		Ejemplo:
+		Buscar un texto que se ajusta a un formato determinado (correo electronico)
+		Buscar si existe una cadena de caracteres dentro de un texto
+		Contar el numero de coincidencias dentro de un texto
+		Hay un monton, recomienda buscar la documentacion para ver todos.</p>
+		<code id="jsEditor38" class="sintax">
+			import re
+
+			cadena="Vamos a aprender expresiones regulares en Python. Python es un lenguaje de sintaxis sencilla"
+
+			textoEncontrado=re.search("Python", cadena)
+			# Busca una palabra en una cadena y devuelve un objeto (si esta).
+
+			print(textoEncontrado.start())
+			# Dice en que caracter encuentra la palabra buscada
+			print(textoEncontrado.end())
+			# Viceversa
+			print(textoEncontrado.span())
+			# Dice ambas y lo devuelve en forma de tupla
+			print(textoEncontrado.fin())
+
+			print(re.findall("Python", cadena))
+			# Devuelve una lista con los strings encontrados
+			# Le podemos poner un 'len' antes para saber la cantidad que hay	
+		</code>
+		<h2><a name="meta">ER (Metacaracteres)</a></h2>
+		<code id="jsEditor39" class="sintax">
+			import re
+
+			lista_nombres=['Ana Gomez',
+							'Maria Martin',
+							'Sandra Lopez',
+							'Santiago Martin',
+							'Sandra Fernandez']
+
+			for elemento in lista_nombres:
+				if re.findall('^Sandra', elemento):
+				# El caracter '^' va a ver cual EMPIEZA con el nombre Sandra y devuelve el elemento de lista completo
+					print(elemento)
+
+			for elemento in lista_nombres:
+				if re.findall('Martin$', elemento):
+				# El caracter '$' va a ver cual TERMINA con el nombre Martin y devuelve el elemento de lista completo
+					print(elemento)
+
+
+			# El caracter '[X] va a buscar si el elemento lo tiene en su interior (Se pueden poner varios y no necesariamente tienen que esta juntos para devolverlo)
+			for elemento in lista_nombres:
+				if re.findall('[S]', elemento):
+					print(elemento)
+
+
+			# Busca 'niños' y 'niñas'. A la vez se usa para buscar elementos que estan en la lista con y sin tilde
+			for elemento in lista_nombres:
+				if re.findall('niñ[oa]s', elemento):
+					print(elemento)
+		</code>
+		<h2><a name="ms">ER (Match y Search)</a></h2>
+		<code id="jsEditor40" class="sintax">
+			import re
+
+			# Match. Buscar si hay coincidencia en un patron de busqueda al COMIENZO de una cadena de texto
+
+			nombre1="Sandra Lopez"
+			nombre2="Antonio Lopez"
+			nombre3="Maria Lopez"
+
+			if re.match("Sandra", nombre1):
+				print("Hemos encontrado el nombre")
+			else:
+				print("No lo hemos encontrado")
+
+			# Se le puede poner en el tercer parametro diferentes cosas:
+				# re.IGNORECASE para que no sea case sensitive
+
+			# Si hay dos nombres similares (Iara, Lara) podemos poner:
+				# re.match(".ara", nombre1) y va a encontrar ambas
+
+			# re.match("\d", nombre1). Busca si empieza por NUMERO
+
+			# --------- Search ---------
+
+			# SEARCH. No busca solo al final sino en cualquier punto
+
+			if re.search("Lopez", nombre1):
+				print("Hemos encontrado el nombre")
+			else:
+				print("No lo hemos encontrado")			
+		</code>
+		</div>
+		<div class="codigo">
+			<h2><a name="decoradores">Decoradores</a></h2>
+			<p>Son funciones que añaden funcionalidades a otras funciones que ya existan.</p>
+			<h3>Sintaxis</h3>
+			<code id="jsEditor41" class="sintax">
+					def funcion_decorador(funcion):
+						def funcion_interna():
+							codigo de la funcion funcion_interna
+					return funcion_interna				
+			</code>
+			<h3>Ejemplo</h3>
+			<code id="jsEditor42" class="sintax">
+				@funcion_decoradora # Le indicamos a la funcion 'suma' que tiene funciones adicionales
+				def suma(num1, num2): # La funcion parametro seria suma
+					print(num1+num2)
+
+				@funcion_decoradora
+				def resta(num1, num2):
+					print(num1-num2)
+
+				def potencia(base, exponente):
+					print(pow(base, exponente))
+
+				suma(7,5)
+				resta(12,10)
+				potencia(base=5, exponente=3) # Para esto sirve el 'kwargs' (Clave-Valor)
+
+				# Se puede usar para abrir y cerrar bases de datos							
+			</code>
+	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" src='{% static "js/estilos.js" %}'></script>
+</body>
+</html>

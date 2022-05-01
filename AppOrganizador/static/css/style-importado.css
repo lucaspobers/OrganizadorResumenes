@@ -1,0 +1,171 @@
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+/*---------------- HOME ----------------*/
+.header-container{
+	border: 2px solid #e3a430;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 5px;
+	display: flex;
+	justify-content: space-around;
+	overflow: hidden;
+}
+
+.header-button{
+	flex-grow: 1;
+	min-height: 40px;
+	font-size: 25px;
+	list-style: none;
+	text-align: center;
+}
+
+.header-button:hover{
+	background-color: #f0c87f;
+	border-radius: 5px;
+}
+
+
+.title-container{
+	display: flex;
+	border: 2px solid #e3a430;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 5px;
+	justify-content: center;
+}
+
+.title-container > img {
+	padding: 20px 25px 20px 25px;
+	max-width: 150px;
+	max-height: 150px;
+}
+
+.index-container{
+	border: 2px solid #e3a430;
+	border-radius: 10px;
+	padding: 5px;
+	margin: 5px;
+}
+
+.index {
+	font-size: 20px;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	list-style: none;
+	justify-items: center;
+}
+
+
+.index > li {
+	padding: 10px;
+}
+
+.index > li:hover{
+	background-color: #f0c87f;
+}
+
+/*---------------- TITULOS ----------------*/
+h1{
+	padding: 20px 25px 20px 25px;
+	font-size: 50px;
+	align-self: center;
+}
+
+h2{
+	padding: 20px 25px 20px 25px;
+	border-bottom: 1px solid #e3a430;
+}
+
+h3 {
+	padding: 10px 25px 10px 25px;
+	text-decoration: underline;
+}
+
+h4{
+	padding: 10px 25px 10px 25px;
+}
+
+
+/*---------------- CONTENIDO ----------------*/
+.codigo{
+	height: 100%;
+	max-width: 100vw;
+	display: flex;
+	flex-direction: column;
+	border: 2px solid #e3a430;
+	border-radius: 10px;
+	padding: 15px 25px 15px 25px;
+	margin: 5px;
+	text-align: justify;
+	font-size: 20px;
+	
+}
+
+.codigo > ul, .codigo > p{
+	padding: 15px 25px 15px 25px;
+	list-style-position: inside;
+}
+
+.codigo > ul > *{
+	padding-bottom: 2px;
+}
+
+.codigo > ul > li > ul > li{
+	list-style: none;
+	list-style-position: inside;
+	padding: 5px 20px 5px 40px;
+
+}
+.codigo > ul > li > ul > li:before{
+	content: "– "
+}
+
+
+.sintax{
+	position: relative;
+	height: 100%;
+	width: 100%;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	border: 1px solid #000;
+	border-radius: 10px;
+}
+
+.division{
+	display: flex;
+}
+
+.division > img {
+	padding: 20px 25px 20px 25px;
+	max-width: 150px;
+	max-height: 150px;
+}
+.rojo{
+	color: red;
+}
+
+.section{
+	padding: 30px;
+	margin: 30px;
+}
+
+.aside{
+	padding: 30px;
+	margin: 30px;
+	background: #c9c9c9;
+}
+
+
+a:link, a:visited,  a:hover, a:active{
+    color: #000000;
+    text-decoration: none;
+}
+
+

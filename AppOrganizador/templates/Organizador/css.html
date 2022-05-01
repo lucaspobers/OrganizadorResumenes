@@ -1,0 +1,453 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" type="text/css" href='{% static "css/style-importado.css" %}'>
+	<title></title>
+</head>
+<body>
+	<div class="header-container">
+			<div class="header-button"><a href="/AppOrganizador/python/">Python</a></div>
+			<div class="header-button"><a href="/AppOrganizador/django/">Django</a></div>
+			<div class="header-button"><a href="/AppOrganizador/javascript/">JavaScript</a></div>
+	</div>
+
+	<div class="title-container">
+		<h1 id="titulo1">Apuntes CSS</h1>
+		<img src="https://redkazz.com/imagenes/CSS3.png">
+	</div>
+
+	<div class="index-container">
+		<ul class="index">
+			<li><a href="#cajsel">Cajas y Selectores</a></li>
+			<li><a href="#especificidad">Especificidad</a></li>
+			<li><a href="#fij-rel">Medidas Fijas y Relativas</a></li>
+			<li><a href="#prop-text">Propiedades de Texto</a></li>
+			<li><a href="#normalize">Normalize</a></li>
+			<li><a href="#teoriacajas">Teoria de Cajas</a></li>
+			<li><a href="#outline">Outline</a></li>
+			<li><a href="#position">Position</a></li>
+			<li><a href="#display">Display</a></li>
+			<li><a href="#overflow">Overflow</a></li>
+			<li><a href="#pseudoelementos">Pseudoelementos</a></li>
+			<li><a href="#pseudoclases">Pseudoclases</a></li>
+			<li><a href="#objectfit">Object-Fit</a></li>
+			<li><a href="#flex">Flex Box</a></li>
+			<li><a href="#grid">Grid</a></li>
+			<li><a href="#responsive">Responsive Designe</a></li>
+			<li><a href="#transition">Transition</a></li>
+			<li><a href="#animacion">Animaciones</a></li>
+			<li><a href="#transform">Transform</a></li>
+			<li><a href="#background">Background</a></li>
+			<li><a href="#variables">Variables</a></li>
+			<li><a href="#filter">Filter</a></li>
+			<li><a href="#otras">Otras propiedades de CSS.</a></li>
+		</ul>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="cajsel">Cajas y Selectores</a></h2>
+		<h3>Tipos de Cajas</h3>
+		<ul>
+			<li><b>Display Block -</b> Completa la linea</li>
+			<li><b>Inline Block -</b> No completa la linea</li>
+		</ul>
+		<h3>Tipos de selectores</h3>
+		<ul>
+			<li><b>Universal:</b> *. Selecciona a todos los elementos</li>
+			<li><b>De Tipo:</b> Seleccionamos por la etiqueta</li>
+			<li><b>De Clase:</b> ".clase-prueba{"</li>
+			<li><b>Por ID:</b> #</li>
+			<li><b>Por Atributo:</b> [value="ejemplo"]</li>
+			<li><b>Descendiente:</b> div code{</li>
+			<li><b>Pseudoclase:</b> p:hover{</li>
+		</ul>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="especificidad">Especificidad</a></h2>
+		<p>Normalmente la jerarquia de los elementos modificados por CSS se rije por la 'cascada', es decir si tengo 3 modificaciones a la etiqueta h1 va a quedar la ultima. Ahora bien, si a esa etiqueta h1 no la selecciono por etiqueta sino por una clase, por ejemplo, va a quedar la modificacion hecha sobre la clase porque es mas especifica.</p>
+		<p><b>Important.</b> Se puede poner la etiqueta "!important" para que dicha modificacion pase el puesto N°1 de jerarquia</p>
+	</div>
+
+	<div class="codigo">		
+		<h2><a name="fij-rel">Medidas Fijas y Relativas</a></h2>
+		<p>Podemos utilizar las medidas fijas como pueden ser los pixeles, cm, mm, etc pero esto nos va a generar un problema cuando adaptemos la pagina a dispositivos moviles, para eso estan las medidas relativas</p>
+		<p>em - Por defecto 1em = 16px. Nosotros podemos definir el valor del em y lo hacemos mediante la herencia. Es decir, si yo por ejemplo en el contenedor padre tengo font-size: 25px, si yo utilizo font-size: 1em en el contenedor hijo, em pasaria 1em = 25px.</p>
+		<p>vw (viewport width) y vh (viewport heigth)- Cuando utilizamos esto estamos hablando del ancho total de la pantalla, es decir, si nosotros le ponemos 50vw estaria ocupando la mitad de la pantalla visible</p>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="prop-text">Propiedades de Texto</a></h2>
+		<ul>
+			<li>font-size: 2em; (tamaño de la letra)</li>
+			<li>font-family: Arial; (Fuente)</li>
+			<li>font-weight: 200; (Grosor de la letra)</li>
+			<li>line-height: 2; (El LH nace del centro de la letra. 1LH = 1/2 tamaño de la letra hacia arriba + 1/2 hacia abajo) No se "estira" la letra sino que se agrandan los bordes</li>
+		</ul>
+		<p>Importar tipografias: En google font podemos encontrar varias. Se pega un link html y se pone el archivo css la font family.</p>
+	</div>
+	<div class="codigo">
+		<h2><a name="normalize">Normalize</a></h2>
+		<p>El navegador que tengamos, de base trae alguno ajustes basicos como puede ser el titulo en negro, los margenes, etc. Para resetear toda la pagina de 0 buscamos normalize.css, hay un repo de github, descargamos el txt, lo metemos en el proyecto y lo linkeamos con un css normal.</p>
+	</div>
+
+	<div class="codigo">
+		<h2><a name="teoriacajas">Teoria de Cajas</a></h2>
+		<p>Existen solo dos tipos de caja, en linea y en bloque. Las cajas en bloque son las mas importantes porque siempre se van a ajustar al ancho de su contenedor, en cambio las cajas en linea van a ajustar su ancho al contenido.</p>
+		<p>Por defecto cada etiqueta ya tiene determinado si es un elemento en linea o en bloque (xEj un "h1" es un elemento en bloque y un "b" es un elemento en linea) pero esto se puede cambiar:</p>
+
+		<h2>Propiedades de Caja</h2>
+		<ul>
+			<li>background-color: red; (Permite cambiar el color de fondo)</li>
+			<li>padding: ; (Distancia entre los bordes de la caja y el texto)</li>
+			<li>margin: ; (Distancia que hay entre las dos cajas)</li>
+			<li>border-radius: ; (Redondea los bordes de la caja)</li>
+			<li>border: 4px solid blue; (Es una propiedad simplificada, tamaño - tipo - color)</li>
+			<li>box-shadow: 2px 4px 15px 0 black; (Permite darle sombra a la caja, eje x - eje y - tamaño desenfoque - cuanto borde va a tener - color)</li>
+			<li>text-shadow: ; (Igual que el anterior pero con el texto)</li>
+			<li>transform: rotate(90deg); (Rota todo lo que hicimos)</li>
+		</ul>
+	</div>
+	<div class="codigo">
+		<h2><a name="outline">Outline</a></h2>
+		<p>Entiendo que es muy similar a border pero la diferencia es que realmente NO OCUPA ESPACIO en el dom. Es decir, no afecta de ninguna manera a los otros elementos que se encuentran en la plantilla. Se dice que sirve para resaltar cosas. Por ejemplo, si yo pongo un input, cuando clickeo se va a poner un borde azul, es borde azul es un outline</p>
+	</div>
+	<div class="codigo">
+		<h2><a name="position">Position</a></h2>
+		<p>Que un elemento esta posicionado significa que va a afectar el flujo. Cuando posicionamos un elemento le estamos otorgando las propiedades top - left - right - bottom</p>
+		<h3>Relative</h3>
+		<p>Conserva el espacio. Si nosotros le ponemos relative y ademas a la caja le agregamos un top de 300px vamos a ver como la caja en si se mueve, pero el lugar donde se encontraba queda en blanco. No deja que otra caja ocupe ese lugar. (Las propiedades top y left tienen prioridad sobre right y bottom)</p>
+		<h3>Absolute</h3>
+		<p>No reserva el espacio. Ademas ahora si nosotros usamos las propiedas top - left, etc va a tomar todo el viewport, es decir, toda la pantalla. (Si ponemos top 0 va a posicionar la caja arriba de todo). Ahora bien, si no definimos top - left, etc se va a posicionar respecto al contenedor (siempre que el contenedor este posicionado). Ademas, si no definimos el tamaño de la caja, al usar absolute, se va a ajustar al contenido sin importar que sea un elemento en bloque</p>
+		<h3>Fixed</h3>
+		<p>Es igual a absolute pero queda fijado en un lugar. Podes seguir bajando en la pagina pero la caja con fixed va  a quedar en el mismo lugar. Se suele usar por ejemplo para crear un menu de navegacion y que quede siempre visible</p>
+		<h3>Sticky</h3>
+		<p>Reserva el espacio al igual que el relative. El ponia el sticky entre dos parrafos, cuando vos llegabas al lugar de la pagina en donde esta la caja con esta propiedad, la caja se quedaba fija en el lugar y a partir de ahi funcionaba como un fixed</p>
+		<h3>Z Index</h3>
+		<p>Solo funciona cuando la caja esta posicionada. Determina, en caso de que varios elementos ocupen el mismo espacio, que elemento va a estar por encima del otro. Para modificarlo podemos poner la propiedad 'z-index: 1;'</p>
+		<p>Esto genera un conflicto entre los elementos padres e hijos, ya que no funciona de la manera convencional. Para hacer que el elemento padre se ponga por sobre el hijo debemos no poner nada en el padre y poner "z-index: -1;" en el hijo.</p>
+	</div>
+	<div class="codigo">
+		<h2><a name="display">Display</a></h2>
+		<p>Permite modificar el comportamiento de las cajas</p>
+		<ul>
+			<li>Block - Ocupan todo el viewport sin importar el contenido</li>
+			<li>Inline - Ajustan el tamaño de la caja al contenido</li>
+			<li>Inline-block - Creo que funciona como un block pero podemos modificar las dimensiones de la caja y permite poner una caja al lado de otra</li>
+			<li>Grid - Se explica despues</li>
+			<li>Flex - Se explica despues</li>
+		</ul>
+	</div>
+	<div class="codigo">
+		<h2><a name="overflow">Overflow</a></h2>
+		<p>La propiedad overflow va a determinar que hacer con "lo que sobra", es decir, si tengo una caja con texto y el texto sobresale de la caja que hago.</p>
+		<ul>
+			<li>AUTO - Le pone una barra lateral para scrollear si es necesario.</li>
+			<li>SCROLL - Obligatoriamente, por mas de que no sea necesario scrollear pone una barra lateral y una abajo.</li>
+			<li>HIDDEN - Se oculta lo restante</li>
+		</ul>
+	</div>
+	<div class="codigo">
+		<h2><a name="pseudoelementos">Pseudoelementos</a></h2>
+		<p> Podemos ver cambios visuales pero no afectan al DOM.</p>
+		<ul>
+			<li>::first-line. No se puede usar en elementos inline. Modifica el primer renglon no importa que tamaño sea, si nosotros modificamos la caja unicamente afectara a la linea que se encuentre encima.</li>
+			<li>::first-letter. Lo mismo pero con la primera letra</li>
+			<li>::placeholder. Se utiliza para cambiar el estilo del placeholder, color, font-size, etc.</li>
+			<li>::selection. Se puede modificar la 'vista' de lo que nosotros o el usuario seleccionamos con el mouse.</li>
+			<li>::before. Se crean como hijos del elemento al que se aplica, NECESITA de la propiedad content y son elementos en linea. Pone ANTES del texto que yo tengo en la plantilla html, lo que pongamos en el apartado 'content' con la particularidad que no puede ser seleccionado ya que no forma parte del DOM.</li>
+			<li>::after. Se crean como hijos del elemento al que se aplica, NECESITA de la propiedad conent y son elementos en linea. Funciona igual que el before pero lo pone DESPUES.</li>
+		</ul>		
+	</div>
+	<div class="codigo">
+		<h2><a name="pseudoclases">Pseudoclases</a></h2>
+		<p>Espera a un 'evento' para funcionar.</p>
+		<ul>
+			<li>:hover. Cuando se le pasa el mouse por encima</li>
+			<li>:link. Cambia como se ve un link que todavia no visitamos.</li>
+			<li>:visited. Cambia como se ve un link que ya visitamos.</li>
+			<li>:active. Mientras mantengamos apretado el clic dentro de la caja va generar modificaciones, apenas lo soltemos desaparece.</li>
+			<li>:focus. Se suele usar en los inputs. Hace los cambios cuando clickeamos encima, al soltar, mientras este seleccionado se van a seguir viendo las modificaciones</li>
+			<li>:lang(). Podemos modificar palabras que esten en un determinado idioma. Le pasamos como parametro el idioma a 'seleccionar'. En la etiqueta html debemos especificar el lang para que funcione.</li>
+		</ul>
+
+	</div>
+	<div class="codigo">
+		<h2><a name="objectfit">Object-Fit</a></h2>
+		<p>Sirve para trabajar con imagenes</p>
+		<ul>
+			<li>Contain - Se ajusta al tamaño de la caja manteniendo las dimensiones originales de la foto</li>
+			<li>Cover - La imagen se ajusta al contenedor y recorta los bordes excedentes</li>
+			<li>None - Usa las dimensiones originales de la foto</li>
+			<li>Scale-Down - Agarra contain y none y usa la que deje la imagen mas chica</li>
+		</ul>
+		<p>object-position - si le ponemos left, muestra mas la imagen del lado izquierdo. Tambien le podemos poner xej '-1em' y moverlo como queramos hacia la derecha o izquierda.</p>
+	</div>
+	<div class="codigo">
+		<h2><a name="flex">Flex Box</a></h2>
+		<p>El flex requiere de dos cosas, el flex container y el flex item. El contenedor flex se suele comportar como un bloque, lo que cambia son los elementos dentro. Solo los hijos de la caja flex son flex items, no es extensible a los nietos.</p>
+		<p>Cuando en una flexbox ponemos dos divs, estos se van a colocar uno al lado del otro y sin importar la cantidad de contenido que nosotros introduzcamos en cada uno la caja va a intentar equipararlos para mantener la altura de la caja. Esto se puede cambiar.</p>
+		<h3>PROPIEDADES (flex - BOX)</h3>
+		<h4>Flex-Direction</h4>
+		<p>Por defecto los items en la pantalla se van a colocar de izq a der y de arriba a abajo. Esto se puede cambiar con flex direction.(Cambiamos la direccion del main axis)</p>
+		<ul>
+			<li>flex-direction: row; - Pone los items en fila</li>
+			<li>flex-direction: column; - Pone los items como una columna</li>
+			<li>flex-direction: row-reverse; - Items en fila de derecha a izquierda</li>
+			<li>flex-direction: column-reverse; - Items en columna de abajo a arriba</li>
+		</ul>
+		<h4>Flex-wrap</h4>
+		<p>Por defecto cuando achicamos la pantalla teniendo flexbox, los items van a achicarse van a achicarse manteniendo la formacion de fila. Esto lo podemos cambiar con flex-wrap.</p>
+		<ul>
+			<li>flex-wrap: wrap; - Respeta el tamaño de las cajas y tira los elementos hacia abajo.</li>
+			<li>flex-wrap: wrap-reverse; - Respeta el tamaño de las cajas y tira los elementos hacia arriba.</li>
+		</ul>
+		<h4>Justify-content</h4>
+		<p>Para centrar los items que se encuentran dentro de la flexbox lo mejores es usar esta propiedad.</p>
+		<ul>
+			<li>justify-content: center; - Se centran los items</li>
+			<li>justify-content: space-around; - Se centran pero ocupando toda la pantalla (dejan mas espacio entre medio)</li>
+			<li>justify-content: space-between; - Se centran dejando el mayor espacio posible entre cajas (Se come el margen izq y der)</li>
+			<li>justify-content: space-evenly; - Deja exactamente el mismo espacio entre las cajas y los margenes</li>
+		</ul>
+		<h4>Align-items</h4>
+		<p>Se utiliza cuando hay unicamente una linea de items que son flex. Alinea los items en vertical (cross axis). Si utilizamos esto cuando achiquemos la pantalla los items que no entren en la primera fila pasar a "centrarse" en el eje vertical.</p>
+		<ul>
+			<li>align-items: center; -Los items siguen desplegados en horizontal pero los coloca en el medio de la pantalla en el eje vertical.</li>
+			<li>align-items: flex-end; - Los items siguen desplegados en horizontal pero los coloca al final del eje vertical.</li>
+			<li>align-items: flex-start; - Los coloca al principio del eje vertical pero a diferencia de la propiedad por defecto, la caja NO se estira hasta el final de la pantalla</li>
+			<li>align-items: baseline; - Si hay un flex-wrap reverse, y ahicamos la pantalla, la linea 'principal' de items se va a mantener pegada abajo de la pantalla y las 'desplazadas' van a centrarse arriba.</li>
+		</ul>
+		<h4>Align-content</h4>
+		<p>Se utiliza cuando hay mas de una linea de items que son flex. La diferencia es que cuando los items ocupan mas de una fila estos en lugar de "centrarse" en la pantalla, se acomodan juntos. Las propiedades son las mismas que en align-items.</p>
+		<h3>PROPIEDADES (flex - ITEM)</h3>
+		<h4>Align-self</h4>
+		<p>Alinea en el cross axis (linea vertical) y funciona igual que el align items.</p>
+		<h4>margin: auto;</h4>
+		<p>No funciona como normalmente sino que va a ir al lado exactamente contrario al que elijamos xej 'margin-top: auto;' va a llevar la caja a abajo de todo y asi con los otros margins. Si utilizamos margin: auto; (el shorthand de margin top, bottom, left y right) lo que va a hacer es centrar el item.</p>
+		<h4>Flex-grow</h4>
+		<p>Si nosotros tenemos 3 items que NO ocupan la totalidad de la pantalla, al poner flex-grow se van a estirar hasta ocuparla (es responsive). Tambien podemos aplicar esto a uno solo de los items, lo que haria que este solo sea el que se estire.</p>
+		<p>La propiedad realmente 'otorga' parte del espacio disponible a los items. Entonces, si nosotros a una caja le ponemos 'flex-grow: 1;' y a otra 'flex-grow: 4;' va a dividir el espacio disponible en 5 y le va a otorga 4/5 a la caja 2.</p>
+		<h4>Flex-basis</h4>
+		<p>Es como el width pero especifico del flex. Si el item tiene las dos propiedades le da prioridad a este.</p>
+		<h4>Flex-shrink</h4>
+		<p>Por las propias caracteristicas del flex, cuando nosotros codeamos un flex item sabemos que al achicar la pantalla este va a disminuir su tamaño incluso por debajo de width que le pongamos (no en el caso del min-width). Lo que hace la propiedad 'flex-shrink' es determinar quien va a ceder mas espacio en el caso de que se achique la pantalla.</p>
+		<h4>Order</h4>
+		<p>Funciona igual que el z-index pero en el eje horizontal (main axis). Determina, en caso de que varios elementos ocupen el mismo espacio, que elemento va a estar por encima del otro. Se usa para cambiar el orden de las cajas.</p>
+	</div>
+	<div class="codigo">
+		<h2><a name="grid">Grid</a></h2>
+		<p>-Por defecto al poner display grid, la 'grilla' se va a crear con una sola columna por lo que se va comportar como un elemento en bloque, para hacer que realmente se comporte como una grilla debemos usar estas propiedades. Cada 'valor' que pongamos va a representar la cantidad de filas/columnas (El ejemplo es una grilla 3x3)</p>
+		<ul>
+			<li>grid-template-columns: 150px 150px 1fr;</li>
+			<li>grid-template-rows: 150px 150px 150px;</li>
+		</ul>
+		<p>Si queremos crear una grilla con muchas celdas podemos utilizar la funcion repeat(10, 100px) lo que va  crear 10 columnas/filas de 100px</p>
+		<h4>Valor 'FR'</h4>
+		<p>Cuando de valor ponemos fr esa columna va a actuar como si tuviera un flex-grow y va a ocupar el espacio disponible.</p>
+		<h4>Grid Gap</h4>
+		<p>Las siguientes propiedades van a actuar como unos margenes entre las celdas (No separa del contenedor)</p>
+		<ul>
+			<li>grid-row-gap: ;</li>
+			<li>grid grid-column-gap: ;</li>
+			<li>grid-gap: 10px 20px; (Shorthand. ROW COLUMN)</li>
+		</ul>
+		<h3>Propiedades Grid ITEM</h3>
+		<p>Para usar las propiedades sobre los items vamos a tener que usar para seleccionar '.grid-item:nth-child(2)' siendo grid-item el nombre de la clase y entre parentesis ponemos el numero de hijo.</p>
+		<p>Para determinar el 'area' de un item. Se pone como valor las grid lines, es decir, en el ejemplo el area el item va a ir desde la linea 1 (pegada al container) hasta la linea 3, por lo que va ocupar dos celdas.</p>
+		<ul>
+			<li>grid-column: 1 / 3;</li>
+			<li>grid-row:  3 / span 3;</li>
+		</ul>
+		<p>Cuando usamos el '3 / span 3' como valor le estamos diciendo que empiece en la linea 3 y se expanda 3 filas/columnas.</p>
+		<h4>Grid Implicito y Explicito</h4>
+		<p>Si al crear la grilla hay algunas celdas que nos 'sobran', estas se van a crear pero con otras cualidades y ya formando parte del grid implicito. Para modificar estas celdas que sobran usamos las siguientes propiedades. (Ahora todas celdas que estan en la fila que sobran van a medir 200px)</p>
+		<ul>
+			<li>grid-auto-rows: 200px;</li>
+			<li>grid-auto-columns: 100px;</li>
+		</ul>
+		<h4>Grid-auto-flow</h4>
+		<ul>
+			<li>grid-auto-flow: column; - Por defecto, las celdas que sobren se van a ubicar en siguiente fila, si queremos que se comporte como columna usamos la siguiente propiedad</li>
+			<li>grid-auto-flow: dense; - Si nos quedan espacios sin ocupar en la grilla, al usar esto se acomoda.</li>
+		</ul>
+		<h4>Grid Dinamico</h4>
+		<ul>
+			<li>min-content - Podemos usar como valor min-content para que las celdas se creen adaptandose al minimo contenido, por lo tanto se va a achicar hasta el espacio que ocupe la primera palabra. (grid-template-columns: repeat(3, min-content);)</li>
+			<li>max-content - Se adapta al maximo contenido. No se usa tanto</li>
+			<li>minmax() - Se establecen los valores minimos y maximos de las celdas. | grid-template-columns: repeat(3, minmax(100px, 300px)); Las celdas van a tener un minimo de 100px y un maximo de 300px </li>
+			<li>auto-fill - Va a crear la cantidad de columnas/filas que pueda, cumpliendo con los valores que le pasemos. | grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); Si 'entra' una columna de 100px la crea</li>
+			<li>auto-fit - Va a 'escalar' los items que tiene disponibles para cubrir la pantalla | grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); En el caso de tener 3 items, con el auto-fill si yo agrando la pantalla se va a seguir creando un espacio para mas items pero va a estar desocupado. Con esta propiedad si tengo 3 items este se va a adaptar a la pantalla</li>
+		</ul>
+	</div>
+	<div class="codigo">
+		<h2><a name="responsive">Responsive Designe</a></h2>
+		<p>Siempre que trabajamos con RD es recomendable usar mobile first, es decir, crear primero el sitio para celular y luego hacer que se adapte al resto de pantallas.</p>
+		<p>Para trabajar ponemos en la plantilla css:</p>
+		<code>
+			@media screen and (min-width: 400px){
+				.main-container{
+					background: red;
+				}
+			}			
+		</code>
+		<p>En este caso le estoy diciendo que si tiene mas de 400px cambie de color el main container a rojo.</p>
+	</div>
+	<div class="codigo">
+		<h2><a name="transition">Transition</a></h2>
+		<p>Cuando aplicamos un evento (x ej un hover), la transicion se hace de manera inmediata, con esta propiedad nosotros podemos hacer que suceda algo.</p>
+		<ul>
+			<li>transition-property: background; - Ponemos que propiedad va a sufrir la transition (REQUERIDO)</li>
+			<li>transition-duration: 1s; - Cuanto va a durar la transition (REQUERIDO)</li>
+			<li>transition-delay: 3s; - Cuanto tengo que esperar con el evento activo para que el cambio suceda.</li>
+			<li>transition-timing-function: ; - Cambia la velocidad con la que se van a hacer las transition (arranca rapido y termina lento x ej)
+				<ul>
+					<li>linear - Siempre misma velocidad</li>
+					<li>ease - Arranca rapido y termina lento</li>
+					<li>ease-in - Arranca lento y termina rapido</li>
+					<li>ease-out - Como el ease pero mas tranqui</li>
+					<li>ease-in-out - Arranca despacio, acelera y termina despacio</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="codigo">
+		<h2><a name="animacion">Animaciones</a></h2>
+		<p>Son muy similares a las transiciones y tienen la siguiente sintaxis</p>
+		<p>@keyframes 'nombre'</p>
+		<code>
+			@keyframes desplazarse {
+				from {
+					background: #aef5f0;
+					padding: 20px;
+					border: 2px solid black;
+
+				}
+
+				to {
+					background: red;
+					padding: 10px;
+					border: 5px solid black;
+
+				}
+
+			}			
+		</code>
+		<p>En lugar de from y to podemos poner 0% y 100% lo que a su vez nos permite agregar mas animaciones intermedias</p>
+		<p>1 -En el from ponemos las caracteristicas iniciales que le vamos a otorgar y en el to en lo que se va a convertir.<br>
+		2 - Luego en el lugar que lo querramos aplicar ponemos lo siguiente</p>
+		<code>
+			.header-container_menu {
+				animation-name: coloracion;
+				animation-duration: 3s;
+			}			
+		</code>
+		<ul>
+			<li>animation-iteration-count: ; - Nos permite establecer cuantas veces se va a repetir la animacion (se puede utilizar el valor 'infinite')</li>
+			<li>animation-direction: ; - Cambia la direccion del '0% - 100%'
+				<ul>
+					<li>reverse: Arranca en el 100%</li>
+					<li>alternate: va de 0 a 100 y vuelve</li>
+					<li>alternate-reverse: va de 100 a 0 y vuelve</li>
+				</ul>
+			</li>
+			<li>animation-fill-mode: ; - Define cual va a ser el modo final.
+				<ul>
+					<li>none: vuelve a la normalidad</li>
+					<li>forwards: se queda en el 100%</li>
+					<li>both: (*) + se comporta como un forwards</li>
+				</ul>
+			</li>
+			<li>animation-timing-function: ; - Tiene los mismos valores que transition-timing-function pero para usarla conviene entrar en inspeccionar elementos y jugar con las curvas que aparecen.</li>
+		</ul>
+		<p>(*) supongamos que la caja empieza en negro y en el 0% le ponemos roja. Con la propiedad 'forwards' vamos a poder visualizar ambos estados de la caja. Ahora bien con esta propiedad directamente va a arrancar como el 0%.</p>
+	</div>
+	<div class="codigo">
+		<h2><a name="transform">Transform</a></h2>
+		<p>Se puede tranformar de varias maneras. Para usarla utilizamos distintas funciones</p>
+		<ul>
+			<li>transform: translateX(50px); - Lo mueve 50px en el eje X </li>
+			<li>transform: translateY(50px);</li>
+			<li>transform: translate(50px, 90px); - Shorthand</li>
+		</ul>
+		<p>((todas las animaciones conviene hacerlas con translate porque consume con menos recursos))</p>
+		<ul>
+			<li>transform: scale(2); - Lo hace el doble de grande del tamaño original.</li>
+			<li>transform: scaleX(0.5);</li>
+			<li>transform: scaleY(3);</li>
+		</ul>
+		<ul>
+			<li>transform: skew(10deg); - Lo inclina hacia los costados</li>
+			<li>transform: skewX(10deg);</li>
+			<li>transform: skewY(10deg);</li>
+		</ul>		
+	</div>
+	<div class="codigo">
+		<h2><a name="background">Background</a></h2>
+		<ul>
+			<li>background-color: ; - Le damos color al fondo</li>
+			<li>background-image: url(); - Ponemos una imagen de fondo. Para configurarla usamos el 'background-size'</li>
+			<li>background-size: 100% 100%; - Podemos usar la unidad de medida que querramos (Incluso object-fit)</li>
+			<li>background-repeat: no-repeat; - Hacemos que no se repita</li>
+			<li>background-clip: ; - Desde donde va a mostrar a la imagen
+				<ul>
+					<li>border-box - Desde los bordes</li>
+					<li>padding-box - Desde el padding</li>
+					<li>content-box - Desde el contenido</li>
+				</ul>
+			</li>
+			<li>background-origin: ; - Funciona igual que el 'background-clip' con la diferencia que clip recorta la imagen y este la crea con las especificaciones que nosotros querramos.</li>
+			<li>background-position: left top; - Permite mezclar dos posiciones para que se ubique dentro del contenedor (left - top - bottom - right - center)(X Y)</li>
+			<li>background-attachment: ;
+				<ul>
+					<li>scroll - Se mueve con la pagina</li>
+					<li>fixed - La imagen queda fija, lo que se mueve es el resto.</li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+	<div class="codigo">
+		<h2><a name="variables">Variables</a></h2>
+		<p>Globales - La creamos con root y la podemos usar para cualquier elemento. Se suele usar para determinar en un principio los colores de la paginas y usarlo varias veces despues.</p>
+		<code>
+			:root {
+				--variable-color: #f00;
+			}
+
+			.container {
+				background: var(--variable-color);
+			}			
+		</code>
+		<p>Locales - Si la creamos en un div solamamente la vamos a poder utilizar en ese div o sus hijos (creo)</p>
+	</div>
+	<div class="codigo">
+		<h2><a name="filter">Filter</a></h2>
+		<ul>
+			<li>filter: blur(5px); - Desenfoca toda la imagen.</li>
+			<li>filter: brightness(1.0); - Se le pone brillo. El valor 1.0 es el base</li>
+			<li>filter: contrast(1.0); - Se le pone contraste.</li>
+			<li>filter: drop-shadow(10px 10px 5px #000); - Se le pone una sombra por debajo. A diferencia del box-shadow (que le pone sombra a toda la caja) con esta propiedad a las imagenes con transparencias se le pone sombra a donde corresponde. Podemos usar un drop-shadow bien finito y pegarlo muchos veces para generar un borde negro al rededor de la imagen con trnasparencia.</li>
+			<li>filter: grayscale(50%); - Al 100% se hace totalmente gris</li>
+			<li>filter: hue-rotate(90deg); - Cambia la gama de colores</li>
+			<li>filter: invert(50%); - Invierte la gama de colores, quedan los que ya estan pero al revez. Si le ponemos en 50% queda gris porque ambos 'cedieron' su parte del color.</li>
+			<li>filter: opacity(50%); - Opacidad </li>
+			<li>filter: saturate(50%); - Saturacion</li>
+			<li>filter: sepia(50%); - Efecto sepia</li>
+		</ul>
+	</div>
+	<div class="codigo">
+		<h2><a name="otras">Otras propiedades, funciones y selectores curiosos de CSS.</a></h2>
+		<ul>
+			<li>letter-spacing: 2px; - Separa las letras</li>
+			<li>scroll-behavior: smooth; - Se le pone a todos los elementos. Si hacemos click en un indice xej hace que vaya a esa parte de la pagina mas lento, no salta directo</li>
+			<li>user-select: none; - No permite seleccionar al usuario</li>
+		</ul>
+	</div>
+
+
+	
+</body>
+</html>
